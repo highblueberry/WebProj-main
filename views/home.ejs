@@ -1,0 +1,81 @@
+<%- include('./include/_header') %>
+  <main>
+      <table class="table-category">
+        <tr> 
+          <td class="image-container">
+            <a href="/restaurants/한식" class="a-default"> 
+            <img src="/img/korean.png" class="image-category"> <div class="caption">한식</div>
+            </a> </td> 
+          <td class="image-container">
+            <a href="/restaurants/중국식" class="a-default"> 
+            <img src="/img/test/chinese.png" class="image-category">  <div class="caption">중식</div> 
+            </a> 
+          </td> 
+          <td class="image-container">
+            <a href="/restaurants/일식" class="a-default"> 
+            <img src="/img/test/japanese.png" class="image-category">  <div class="caption">일식</div> 
+            </a> 
+          </td> 
+        </tr>
+        <tr> 
+          <td class="image-container">
+            <a href="/restaurants/경양식" class="a-default"> 
+            <img src="/img/western.png" class="image-category">  <div class="caption">경양식</div> 
+            </a>
+          </td> 
+          <td class="image-container">
+            <a href="/restaurants/아시아" class="a-default"> 
+            <img src="/img/asia.png" class="image-category">  <div class="caption">아시아</div> 
+            </a>
+          </td> 
+          <td class="image-container" >
+            <a href="/restaurants/숯불구이" class="a-default"> 
+            <img src="/img/test/grill.png" class="image-category">  <div class="caption">숯불구이</div>
+            </a>
+          </td> 
+        </tr>
+      </table>
+  </main>
+
+  <hr>
+
+  <form action="/search" method="GET">
+    <div class="search">
+        <input type="text" name="search">
+        <button type="submit">검색</button>
+    </div>
+
+  </form>
+  
+
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Restaurants</th>
+            <th>Rating</th>
+            <th>category</th>
+            <th>Address</th>
+            <th>tel-no</th>
+            
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% restaurants.forEach(restaurant => { %>
+        <tr>
+            <td><%= restaurant.rest_name %></td>
+            <td><%= restaurant.average_rating %></td>
+            <td><%= restaurant.category %></td>
+            <td><%= restaurant.rest_addr %></td>
+            <td><%= restaurant.rest_telno %></td>
+            
+            <td>
+                <a href="/reservations/<%= restaurant._id %>" class="btn-reservation" title="예약">
+                <button type="button" class="btn btn-warning">예약</button></a>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('./include/_footer') %>

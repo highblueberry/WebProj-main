@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>망고가 얼망고</title>
+
+    <style>
+        .search_box {
+            position: relative;
+            width: 300px;
+        }
+        
+        .search_input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+          }
+          
+          .search_img {
+            position : absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+          }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <P style="text-align: center;"><img src="image/mango.png" width="174", height="124" alt="망고"></P>
+        <div class="search_box" style="text-align: center;">
+            <input class="search_input" type="text", name="search" placeholder="검색어를 입력하세요.">
+            <img class="search_img" src ="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+        </div>
+    </header>
+
+    <hr>
+
+    <!--음식 카테고리 설정-->
+    <nav>
+        <div style="text-align: center;">
+            <input type="checkbox" name="category" valuew="한식">한식
+            <input type="checkbox" name="category" valuew="중식">중식
+            <input type="checkbox" name="category" valuew="일식">일식
+            <input type="checkbox" name="category" valuew="경양식">경양식
+            <input type="checkbox" name="category" valuew="고기">고기
+            <input type="button" value="적용" onClick="getCategory"><hr>
+        </div>
+    </nav>
+
+    <!--음식점 표시-->
+    <Section>
+        
+    </Section>
+
+</body>
+
+
+
+
+</html>
