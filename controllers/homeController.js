@@ -15,7 +15,7 @@ const getSearch = asyncHandler(async (req, res) => {
     const { search } = req.query;
     results = await Restaurant.find({ 
       rest_name: {
-        "$regex": new RegExp(search)
+        "$regex": new RegExp(search), '$options': 'i'
       } 
     })
     
