@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
-    restaurant_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant' },
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     rating: Number,
     content: String,
     created_at: { type: Date, default: Date.now },
 });
-
-const Review = mongoose.model('Review', reviewSchema);
 
 const restaurantSchema = new mongoose.Schema({
     rest_name: String,
@@ -20,9 +17,4 @@ const restaurantSchema = new mongoose.Schema({
     reviews: [reviewSchema],
 });
 
-const Restaurant = mongoose.model('Restaurant', restaurantSchema);
-
-module.exports = {
-    Review,
-    Restaurant
-}
+module.exports = mongoose.model('Restaurant', restaurantSchema);

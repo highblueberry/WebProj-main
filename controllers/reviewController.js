@@ -1,12 +1,22 @@
 const Restaurant = require('../models/Restaurant');
-const Reservation = require('../models/Reservation');
-const User = require('../models/User');
 const asyncHandler = require("express-async-handler");
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-const jwtSecret = process.env.JWT_SECRET_KEY;
+const mongoose = require("mongoose");
+
+
+// 리뷰 조회
+// GET /review/:id
+const getReviews = asyncHandler(async (req, res) => {
+    const restaurant = await Restaurant.findById(req.params.id);
+    if(!restaurant) return res.status(404).json({ message: 'Restaurant not found'});
+    res.render('review', {
+        title : 'Add Reivew',
+        restaurant : restaurant.rest_name,
+        restaurantId : req.params.id
+    })
+})
 
 // 리뷰 작성
+// POST /review/:id
 const addReview = asyncHandler(async (req, res) => {
     const { rating, content } = req.body;
     const restaurant = await Restaurant.findById(req.params.id);
@@ -21,27 +31,28 @@ const addReview = asyncHandler(async (req, res) => {
     res.status(201).json({ message: 'Review added successfully' });
 });
 
-const addReviewForm = asyncHandler((req, res) => {
-    res.render("addReview", {
-        title : 'writing review'
-    });
+
+// 리뷰 삭제
+// DELETE //review/:id
+const deleteReview = asyncHandler(async (req, res) => {
+    const reviewId = mongoose.Types.ObjectId(req.query.id);
+
+    const restaurant = await Restaurant.findOne({ 'reviews._id': reviewId });
+
+    console.log(reviewId);
+
+    if(restaurant) {
+        restaurant.reviews.pull({ _id: reviewId });
+        await restaurant.save();
+    }
+
+
+    res.redirect("back");
 });
 
 
-// const createReview = asyncHandler(async (req, res) => {
-//     const token = req.cookies.token;
-//     const decoded = jwt.verify(token, jwtSecret);
-
-//     const { rating, content, } = req.body;
-
-//     const review = new Reivew({ restaurant_id: req.params.id, user_id: decoded.id, rating: rating, content: contnet });
-//     await review.save();
-//     res.status(201).json({ message: 'Reservation created successfully' });
-// });
-
-
 module.exports = {
+    getReviews,
     addReview,
-    addReviewForm,
-    // createReview
-};
+    deleteReview
+}

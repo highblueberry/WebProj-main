@@ -18,26 +18,16 @@
 
             <tr><td>
                 <div><b>예약 날짜</b></div>
-                <input type="datetime-local" placeholder="Date" name="reservation_date" id="currentDate" onchange="setMinValue()" class="text-register">
+                <input type="datetime-local" placeholder="Date" name="reservation_date" id="currentDate" class="text-register">
             </td></tr>
             <tr><th><input type="submit" value="예약" class="btn-register"></th></tr>
         </table>
-
-
-
-        <!-- <label for="reservationPerson"><b>Reservatino Person</b></label>
-        <input type="text" placeholder="reservationPerson" name="reservation_person" id="reservationPerson">
-        <label for="numGuests"><b>Num Guests</b></label>
-        <input type="number" min="1" placeholder="NumGuests" name="num_guests" id="numGuests">
-        <label for="date"><b>Date</b></label>
-        <input type="datetime-local" placeholder="Date" name="reservation_date" id="currentDate">
-        <input type="submit" value="Reservation" class="reservation-btn"> -->
     </form>
 </main>
 
 <script>
     let dateElement = document.getElementById('currentDate');
-    let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+    let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
     dateElement.value = date;
     dateElement.setAttribute("min", date);
 
@@ -48,6 +38,5 @@
         }
     }
 </script>
-
 
 <%- include('./include/_footer') %>

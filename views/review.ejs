@@ -1,12 +1,11 @@
 <%- include('./include/_header') %>
 
-
 <!-- Main -->
 <main id="site-main">
     <p> <h2>리뷰 작성</h2> </p>
     <br><br>
 
-    <form action="/reviews/addReview" method="POST" id='add-review'>
+    <form action="/reviews/<%= restaurantId %>" method="POST" id='add-review'>
       <table class="table-review">
         <tr><td>&nbsp;&nbsp;별점</td></tr>
 
@@ -32,7 +31,7 @@
         <tr><td>
           <div class="form-floating">
             <span>리뷰 내용</span>
-            <textarea class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
+            <textarea class="form-control" name="content" id="floatingTextarea2" style="height: 100px"></textarea>
 
           <tr><th><button type="submit" class="btn btn-warning">작성 완료</button></th></tr>
           </div>
@@ -44,7 +43,5 @@
     </form>   
   </main>
 <!-- /Main -->
-
-
 
 <%- include('./include/_footer') %>
