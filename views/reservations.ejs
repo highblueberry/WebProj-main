@@ -11,9 +11,6 @@
                 <input type="text" class="text-register" placeholder="reservationPerson" name="reservation_person" id="reservationPerson">
             </td></tr>
 
-
-            
-
             <tr><td>
             <div><label for="numGuests"><b>Num Guests</b></label></div>     
             <input type="number" min="1" class="text-register" placeholder="NumGuests" name="num_guests" id="numGuests">
@@ -21,7 +18,7 @@
 
             <tr><td>
                 <div><b>예약 날짜</b></div>
-                <input type="date" class="text-register">
+                <input type="datetime-local" placeholder="Date" name="reservation_date" id="currentDate" onchange="setMinValue()" class="text-register">
             </td></tr>
             <tr><th><input type="submit" value="예약" class="btn-register"></th></tr>
         </table>
@@ -37,5 +34,20 @@
         <input type="submit" value="Reservation" class="reservation-btn"> -->
     </form>
 </main>
+
+<script>
+    let dateElement = document.getElementById('currentDate');
+    let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+    dateElement.value = date;
+    dateElement.setAttribute("min", date);
+
+    function setMinValue() {
+        if(dateElement.value < date) {
+            alert('현재 시간보다 이전의 날짜는 설정할 수 없습니다.');
+            dateElement.value = date;
+        }
+    }
+</script>
+
 
 <%- include('./include/_footer') %>
