@@ -96,7 +96,7 @@ hr {
 
 /*//////////////////////////////////////////////////////////////////*/
 /* 회원가입 페이지  */
-.table_register {
+.table-register {
   width: 280px;
   height: 550px;
   margin: auto auto;      
@@ -112,7 +112,7 @@ hr {
   padding-left: 10px;
   background-color: rgb(233,233,233);
 }
-.text_register {
+.text-register {
   width: 250px;
   height: 32px;
   font-size: 15px;
@@ -122,7 +122,7 @@ hr {
   padding-left: 10px;
   background-color: rgb(233,233,233);
 }
-.btn_register {
+.btn-register {
   width: 200px;
   height: 32px;
   font-size: 15px;
@@ -145,11 +145,18 @@ hr {
 
 
 
-
-
-
 /*//////////////////////////////////////////////////////////////////*/
-/* 별점 기능 */
+/* 리뷰 작성 페이지 */
+.table-review {
+  width: 100px;
+  height: 70px;
+  margin: auto auto;      
+}
+.table-writing {
+  width: 300px;
+  height: 100px;
+  margin: auto auto;
+}
 .star-rating {
   display: flex;
   flex-direction: row-reverse;

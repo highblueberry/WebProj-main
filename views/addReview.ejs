@@ -4,14 +4,14 @@
 <!-- Main -->
 <main id="site-main">
     <p> <h2>리뷰 작성</h2> </p>
-    <br><br><br><br>
+    <br><br>
 
     <form action="/reviews/addReview" method="POST" id='add-review'>
-        <div class="col-12">
-          <span>별점</span>
-        </div>
+      <table class="table-review">
+        <tr><td>&nbsp;&nbsp;별점</td></tr>
 
-        <div class="star-rating space-x-4 mx-auto">
+        <tr><th>
+          <div class="star-rating space-x-4 mx-auto">
             <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
             <label for="5-stars" class="star pr-4">★</label>
             <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
@@ -23,15 +23,25 @@
             <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
             <label for="1-star" class="star">★</label>
         </div>
-        <br><br>
+        </th></tr>      
+      </table>
 
-        <div class="form-floating">
-            <div>리뷰 내용</div>
+      <br><br>
+
+      <table class="table-writing">
+        <tr><td>
+          <div class="form-floating">
+            <span>리뷰 내용</span>
             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
             <label for="floatingTextarea2">Comments</label>
+
+          <tr><th><button type="submit">작성 완료</button></th></tr>
           </div>
-        <button type="submit">작성 완료</button>
-      </div>
+        </td></tr>
+      </table>
+        
+
+        
     </form>   
   </main>
 <!-- /Main -->
